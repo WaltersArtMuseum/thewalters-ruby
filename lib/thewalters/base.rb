@@ -1,11 +1,16 @@
 module TheWalters
+  # An error accessing the Walters API.
   class ApiError < StandardError; end
+
+  # A base objet for all endpoints.
   class Base < Hashie::Mash
 
+    # Get a list of all.
     def self.all(params={})
       get_all(params)
     end
 
+    # Find a specific item by id.
     def self.find(id)
       get_by_id(id)
     end

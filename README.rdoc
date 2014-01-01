@@ -1,9 +1,40 @@
 = thewalters-ruby
 
-Description goes here.
+A Ruby gem for communicating with {The Walters API}[http://api.thewalters.org/help/index].
+
+== Install
+
+Via rubygems.org:
+
+  gem install thewalters
+
+Via bundler in a Gemfile:
+
+  gem "thewalters"
+
+== Accessing the REST API
+
+  require 'thewalters'
+
+  objects = TheWalters::ArtObject.all
+  object = TheWalters::ArtObject.find(objects.first.id)
+
++all+ returns an array of ruby objects, each object has all the API attributes on it. +find+ returns
+a single ruby object.
+
+See The Walters API at http://api.thewalters.org/help/index for up-to-date documentation.
 
 == Contributing to thewalters-ruby
- 
+
+This is a very immature project, and I need your help! The goal is to have a fully-featured
+API client available for attendees of {ArtBytes 2014}[http://www.eventbrite.com/e/art-bytes-at-the-walters-tickets-9534980383].
+
+=== Things that need to be done
+* Add more endpoints
+* Implement parameter passing to the endpoints
+* Add more tests
+
+=== Do's and Don'ts
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
 * Fork the project.

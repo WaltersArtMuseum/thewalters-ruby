@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "thewalters"
   gem.homepage = "http://github.com/WaltersArtMuseum/thewalters-ruby"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{A Ruby gem for communicating with The Walters API}
+  gem.description = %Q{Easily get object metadata from The Walters API}
   gem.email = "jonathan@jonathanjulian.com"
   gem.authors = ["Jonathan Julian"]
   # dependencies defined in Gemfile
