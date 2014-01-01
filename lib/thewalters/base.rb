@@ -35,7 +35,7 @@ module TheWalters
         base_url,
         headers: {user_agent: "walters-ruby (Faraday v#{Faraday::VERSION})"}
       ) do |faraday|
-        faraday.response :logger
+        # faraday.response :logger
         faraday.adapter Faraday.default_adapter
       end
     end
