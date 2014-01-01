@@ -2,6 +2,8 @@
 
 A Ruby gem for communicating with {The Walters API}[http://api.thewalters.org/help/index].
 
+{<img src="https://gemnasium.com/WaltersArtMuseum/thewalters-ruby.png" alt="Dependency Status" />}[https://gemnasium.com/WaltersArtMuseum/thewalters-ruby]
+
 == Install
 
 Via rubygems.org:
