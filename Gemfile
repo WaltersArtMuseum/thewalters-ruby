@@ -1,8 +1,8 @@
 source "https://rubygems.org"
 # Add dependencies required to use your gem here.
-  gem "hashie"
-  gem "faraday"
-  gem "json"
+gem "hashie", ">= 1.2.0"
+gem "faraday", ">= 0.8.1"
+gem "json", ">= 1.7.0"
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
