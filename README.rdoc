@@ -2,6 +2,7 @@
 
 A Ruby gem for communicating with {The Walters API}[http://api.thewalters.org/help/index].
 
+{<img src="https://travis-ci.org/WaltersArtMuseum/thewalters-ruby.png?branch=master" alt="Build Status" />}[https://travis-ci.org/WaltersArtMuseum/thewalters-ruby]
 {<img src="https://gemnasium.com/WaltersArtMuseum/thewalters-ruby.png" alt="Dependency Status" />}[https://gemnasium.com/WaltersArtMuseum/thewalters-ruby]
 
 == Install
