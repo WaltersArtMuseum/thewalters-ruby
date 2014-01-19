@@ -26,7 +26,8 @@ module TheWalters
 
     def self.get_all(params)
       path = [version, api_path].join("/")
-      objects = fetch(path, params)
+      result = fetch(path, params)
+      objects = result["Items"]
       objects.map {|o| self.new(o) }
     end
 
