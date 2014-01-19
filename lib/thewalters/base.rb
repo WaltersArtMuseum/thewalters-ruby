@@ -35,6 +35,13 @@ module TheWalters
       self.new(object)
     end
 
+    def self.get_objects(id, params)
+      path = [version, api_path, id, 'objects'].join("/")
+      result = fetch(path, params)
+      result["Items"] = result["Items"].map {|o| ArtObject.new(o) }
+      result
+    end
+
     def self.version; "v1" end
     def self.base_url; "http://api.thewalters.org" end
     def self.path

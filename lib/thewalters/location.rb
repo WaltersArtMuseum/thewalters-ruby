@@ -4,8 +4,8 @@ module TheWalters
   # associated with a 'not on view' location.
   class Location < Base
 
-    def objects
-      # TODO
+    def objects(params)
+      TheWalters::Location.get_objects(self.LocationID, params)
     end
 
     private

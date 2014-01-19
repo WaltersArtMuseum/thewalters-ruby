@@ -4,8 +4,8 @@ module TheWalters
   # primarily by culture and sometimes by date.
   class Collection < Base
 
-    def objects
-      # TODO
+    def objects(params)
+      TheWalters::Collection.get_objects(self.CollectionID, params)
     end
 
     private

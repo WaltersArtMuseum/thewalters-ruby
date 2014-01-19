@@ -3,8 +3,8 @@ module TheWalters
   # of museum objects.
   class Exhibition < Base
 
-    def objects
-      # TODO
+    def objects(params)
+      TheWalters::Exhibition.get_objects(self.ExhibitionID, params)
     end
 
     private

@@ -3,8 +3,8 @@ module TheWalters
   # or discovered, or locations that an object depicts or mentions.
   class Geography < Base
 
-    def objects
-      # TODO
+    def objects(params)
+      TheWalters::Geography.get_objects(self.GeographyID, params)
     end
 
     private
