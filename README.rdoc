@@ -1,6 +1,6 @@
 = thewalters-ruby
 
-A Ruby gem for communicating with {The Walters API}[http://api.thewalters.org/help/index].
+A Ruby gem for communicating with {The Walters API}[http://api.thewalters.org/help/index]. {Documentation}[https://github.com/WaltersArtMuseum/walters-api]
 
 {<img src="https://travis-ci.org/WaltersArtMuseum/thewalters-ruby.png?branch=master" alt="Build Status" />}[https://travis-ci.org/WaltersArtMuseum/thewalters-ruby]
 {<img src="https://gemnasium.com/WaltersArtMuseum/thewalters-ruby.png" alt="Dependency Status" />}[https://gemnasium.com/WaltersArtMuseum/thewalters-ruby]
@@ -33,9 +33,8 @@ This is a very immature project, and I need your help! The goal is to have a ful
 API client available for attendees of {ArtBytes 2014}[http://www.eventbrite.com/e/art-bytes-at-the-walters-tickets-9534980383].
 
 === Things that need to be done
-* Add more endpoints
-* Implement parameter passing to the endpoints
 * Add more tests
+* implement objects/:id/images with a first-class image object
 
 === Do's and Don'ts
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
