@@ -18,11 +18,6 @@ module TheWalters
       get_all(params)
     end
 
-    # Find a specific item by id.
-    def self.find(id)
-      get_by_id(id)
-    end
-
     private
 
     # Returns a Hash; "Items" contains the array of items.
