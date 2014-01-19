@@ -2,6 +2,9 @@ require 'helper'
 
 class BaseTest < Test::Unit::TestCase
   class ExampleObject < TheWalters::Base
+    def self.find(id)
+      get_by_id(id)
+    end
     def self.api_path; "foo" end
   end
 
