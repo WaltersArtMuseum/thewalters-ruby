@@ -34,7 +34,6 @@ API client available for attendees of {ArtBytes 2014}[http://www.eventbrite.com/
 
 === Things that need to be done
 * Add more tests
-* implement objects/:id/images with a first-class image object
 
 === Do's and Don'ts
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.

@@ -10,7 +10,7 @@ module TheWalters
 
     # Get the images for this object
     def images
-      # TODO
+      TheWalters::ArtObject.get_images(self.ObjectID)
     end
 
     private

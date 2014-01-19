@@ -42,6 +42,13 @@ module TheWalters
       result
     end
 
+    def self.get_images(id)
+      path = [version, api_path, id, 'images'].join("/")
+      result = fetch(path)
+      result["Items"] = result["Items"].map {|o| Image.new(o) }
+      result
+    end
+
     def self.version; "v1" end
     def self.base_url; "http://api.thewalters.org" end
     def self.path
