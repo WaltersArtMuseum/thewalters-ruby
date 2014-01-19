@@ -45,7 +45,7 @@ module TheWalters
     def self.faraday
       Faraday.new(
         base_url,
-        headers: {user_agent: "walters-ruby (Faraday v#{Faraday::VERSION})"}
+        headers: {:user_agent => "walters-ruby (Faraday v#{Faraday::VERSION})", :accept => 'application/json'}
       ) do |faraday|
         # faraday.response :logger
         faraday.adapter Faraday.default_adapter
