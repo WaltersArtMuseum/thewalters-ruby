@@ -9,11 +9,11 @@ class BaseTest < Test::Unit::TestCase
     TheWalters.apikey = 'abc'
     test_faraday = Faraday.new do |builder|
       builder.adapter :test, Faraday::Adapter::Test::Stubs.new do |stub|
-        stub.get('/v1/foo') {[ 200, {"content-type" => "application/json"}, '[{"id": 1},{"id": 2},{"id": 3}]' ]}
+        stub.get('/v1/foo') {[ 200, {"content-type" => "application/json"}, '{"Items": [{"id": 1},{"id": 2},{"id": 3}]}' ]}
       end
     end
     ExampleObject.expects(:faraday).returns(test_faraday)
-    rows = ExampleObject.all
+    rows = ExampleObject.all["Items"]
     assert_equal 3, rows.size
     assert_equal ExampleObject, rows.first.class
     assert_equal 1, rows.first.id
@@ -24,11 +24,11 @@ class BaseTest < Test::Unit::TestCase
     TheWalters.apikey = 'abc'
     test_faraday = Faraday.new do |builder|
       builder.adapter :test, Faraday::Adapter::Test::Stubs.new do |stub|
-        stub.get('/v1/foo') {[ 200, {"content-type" => "application/json"}, '[{"id": 1},{"id": 2}]' ]}
+        stub.get('/v1/foo') {[ 200, {"content-type" => "application/json"}, '{"Items": [{"id": 1},{"id": 2}]}' ]}
       end
     end
     ExampleObject.expects(:faraday).returns(test_faraday)
-    rows = ExampleObject.all(:pageSize => 2)
+    rows = ExampleObject.all(:pageSize => 2)["Items"]
     assert_equal 2, rows.size
     assert_equal ExampleObject, rows.first.class
     assert_equal 1, rows.first.id
@@ -39,7 +39,7 @@ class BaseTest < Test::Unit::TestCase
     TheWalters.apikey = 'abc'
     test_faraday = Faraday.new do |builder|
       builder.adapter :test, Faraday::Adapter::Test::Stubs.new do |stub|
-        stub.get('/v1/foo/1') {[ 200, {"content-type" => "application/json"}, '{"id": 1}' ]}
+        stub.get('/v1/foo/1') {[ 200, {"content-type" => "application/json"}, '{"Data": {"id": 1}}' ]}
       end
     end
     ExampleObject.expects(:faraday).returns(test_faraday)

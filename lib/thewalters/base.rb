@@ -24,16 +24,18 @@ module TheWalters
 
     private
 
+    # Returns a Hash; "Items" contains the array of items.
     def self.get_all(params)
       path = [version, api_path].join("/")
       result = fetch(path, params)
-      objects = result["Items"]
-      objects.map {|o| self.new(o) }
+      result["Items"] = result["Items"].map {|o| self.new(o) }
+      result
     end
 
     def self.get_by_id(id)
       path = [version, api_path, id].join("/")
-      object = fetch(path)
+      result = fetch(path)
+      object = result["Data"]
       self.new(object)
     end
 
