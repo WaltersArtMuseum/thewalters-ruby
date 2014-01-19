@@ -6,6 +6,7 @@ class BaseTest < Test::Unit::TestCase
   end
 
   def test_all_returns_objects
+    TheWalters.apikey = 'abc'
     test_faraday = Faraday.new do |builder|
       builder.adapter :test, Faraday::Adapter::Test::Stubs.new do |stub|
         stub.get('/v1/foo') {[ 200, {"content-type" => "application/json"}, '[{"id": 1},{"id": 2},{"id": 3}]' ]}
@@ -20,6 +21,7 @@ class BaseTest < Test::Unit::TestCase
   end
 
   def test_all_with_params_returns_objects
+    TheWalters.apikey = 'abc'
     test_faraday = Faraday.new do |builder|
       builder.adapter :test, Faraday::Adapter::Test::Stubs.new do |stub|
         stub.get('/v1/foo') {[ 200, {"content-type" => "application/json"}, '[{"id": 1},{"id": 2}]' ]}
@@ -34,6 +36,7 @@ class BaseTest < Test::Unit::TestCase
   end
 
   def test_find_returns_object
+    TheWalters.apikey = 'abc'
     test_faraday = Faraday.new do |builder|
       builder.adapter :test, Faraday::Adapter::Test::Stubs.new do |stub|
         stub.get('/v1/foo/1') {[ 200, {"content-type" => "application/json"}, '{"id": 1}' ]}
