@@ -1,6 +1,7 @@
 module TheWalters
   # An error accessing the Walters API.
   class ApiError < StandardError; end
+  class NotFound < StandardError; end
 
   def self.apikey=(apikey)
     @apikey = apikey
@@ -60,17 +61,23 @@ module TheWalters
       params = {:apikey => TheWalters.apikey}.merge(params)
       response = faraday.get(path, params)
       # puts "body: #{response.body}"
-      if response.headers['content-type'] =~ /json/
-        parsed = JSON.parse(response.body)
-        if response.success?
-          parsed
+      if response.success?
+        if response.headers['content-type'] =~ /json/
+          parsed = JSON.parse(response.body)
         else
-          details = ": #{parsed['Message'] || parsed['ReturnMessage']}"
-          # p parsed['ExceptionMessage']
-          raise ApiError.new("#{response.status}#{details}")
+          raise ApiError.new("Response is not JSON: #{response.body}")
         end
+      elsif response.status == 404
+        raise NotFound.new("This resource was not found: #{path}")
       else
-        raise ApiError.new("Response is not JSON: #{response.body}")
+        if response.headers['content-type'] =~ /json/
+          parsed = JSON.parse(response.body)
+          # p parsed['ExceptionMessage']
+          details = parsed['Message'] || parsed['ReturnMessage']
+        else
+          details = response.body
+        end
+        raise ApiError.new("#{response.status}: #{details}")
       end
     end
 
