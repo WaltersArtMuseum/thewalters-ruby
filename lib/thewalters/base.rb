@@ -2,6 +2,13 @@ module TheWalters
   # An error accessing the Walters API.
   class ApiError < StandardError; end
 
+  def self.apikey=(apikey)
+    @apikey = apikey
+  end
+  def self.apikey
+    @apikey
+  end
+
   # A base objet for all endpoints.
   class Base < Hashie::Mash
 
@@ -46,6 +53,8 @@ module TheWalters
     end
 
     def self.fetch(path, params={})
+      raise "You must first set your api key: try `TheWalters.apikey = '<mykey>'" if TheWalters.apikey.nil?
+      params = {:apikey => TheWalters.apikey}.merge(params)
       response = faraday.get(path, params)
       # puts "body: #{response.body}"
       if response.headers['content-type'] =~ /json/
