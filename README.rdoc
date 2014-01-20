@@ -19,18 +19,54 @@ Via bundler in a Gemfile:
 
   require 'thewalters'
 
-  objects = TheWalters::ArtObject.all
-  object = TheWalters::ArtObject.find(objects.first.id)
+  TheWalters.apikey = "<your API key>" # register at http://api.thewalters.org/
 
-+all+ returns an array of ruby objects, each object has all the API attributes on it. +find+ returns
+  # Objects: pieces of art in the museum
+  all_objects = TheWalters::ArtObject.all
+  first_object = all_objects["Items"].first
+  an_object = TheWalters::ArtObject.find(756)
+
+  # An Object has many associated images
+  images = an_object.images
+  normal = images.first.url
+  # Images can be modified on the fly, see https://github.com/WaltersArtMuseum/walters-api/blob/master/images.md
+  thumb = images.first.url(:width => 100)
+
+  # All requests for lists are paginated
+  page = TheWalters::ArtObject.all(:Page => 1, :pageSize => 10)
+  has_another_page = page.NextPage
+
+  # Collections: Objects grouped by culture, and sometimes date
+  all_collections = TheWalters::Collection.all
+  a_collection = all_collections["Items"].first
+  objects_in_collection = a_collection.objects
+
+  # Exhibitions: an organized display of objects
+  all_exhibitions = TheWalters::Exhibition.all
+  an_exhibition = all_exhibitions["Items"].first
+  objects_in_exhibition = an_exhibition.objects
+
+  # Geographies: where an object was created or discovered
+  all_geographies = TheWalters::Geography.all
+  a_geography = all_geographies["Items"].first
+  objects_in_geography = a_geography.objects
+
+  # Museum Locations: rooms, buildings, etc
+  all_locations = TheWalters::Locations.all
+  a_location = all_locations["Items"].first
+  objects_in_location = a_location.objects
+
+
++all+ returns a data structure, the attribute +Items+ contains array of ruby objects. Each object has all the API attributes on it. +find+ returns
 a single ruby object.
 
 See The Walters API at http://api.thewalters.org/help/index for up-to-date documentation.
 
 == Contributing to thewalters-ruby
 
-This is a very immature project, and I need your help! The goal is to have a fully-featured
+The goal is to have a fully-featured
 API client available for attendees of {ArtBytes 2014}[http://www.eventbrite.com/e/art-bytes-at-the-walters-tickets-9534980383].
+Are you planning to use this gem? Does it meet your needs? Let @jjulian know.
 
 === Things that need to be done
 * Add more tests
